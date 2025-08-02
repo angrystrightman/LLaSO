@@ -1,0 +1,42 @@
+#!/bin/bash
+
+
+deepspeed /llaso/train/train_mem.py \
+    --deepspeed /llaso/scripts/zero2.json \
+    --model_name_or_path /code/syr/Llama-3.2-3B-Instruct\
+    --version llama32_audio_v1_mmtag \
+    --data_path  ./LLaSO-Instruct/merged/stage2_train.json \
+    --audio_tower /code/syr/whisper-large-v3 \
+    --pretrain_audio_aligner /llaso/llaso_aligned_3b_ckpts/checkpoint-xxx/mm_audio_aligner.bin \
+    --audio_projector_type mlp2x_gelu \
+    --tune_mm_mlp_adapter  False \
+    --tune_mm_audio_projector False \
+    --mm_vision_select_layer -2 \
+    --mm_use_im_start_end False \
+    --mm_use_im_patch_token False \
+    --mm_use_audio_start_end True \
+    --bf16 True \
+    --output_dir /llaso/llaso_sft_3b_ckpts \
+    --num_train_epochs  1 \
+    --per_device_train_batch_size 1 \
+    --per_device_eval_batch_size 1 \
+    --gradient_accumulation_steps 32 \
+    --evaluation_strategy "no" \
+    --eval_steps 100 \
+    --save_strategy "steps" \
+    --save_steps 500 \
+    --save_total_limit 50 \
+    --learning_rate 3e-5 \
+    --weight_decay 0. \
+    --warmup_ratio 0.01 \
+    --lr_scheduler_type "cosine" \
+    --logging_steps 1 \
+    --tf32 False\
+    --model_max_length 2048 \
+    --gradient_checkpointing True \
+    --dataloader_num_workers 4 \
+    --lazy_preprocess True \
+    --report_to none \
+    --mix_va False \
+    --group_by_modality_length True \
+    --max_grad_norm 1.0 \
