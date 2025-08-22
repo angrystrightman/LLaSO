@@ -948,10 +948,10 @@ class args:
 def eval():
     parser = argparse.ArgumentParser()
     parser.add_argument("--vision_tower", type=str, default=None) 
-    parser.add_argument("--audio_tower", type=str, default="./whisper-large-v3")  
-    parser.add_argument("--model_base", type=str, default= None)  
+    parser.add_argument("--audio_tower", type=str, default="./whisper-large-v3")   # your local whisper-large-v3 path
+    parser.add_argument("--model_base", type=str, default= None)  #set as None or the Base LLM such as the path of your local Llama-3.2-3B-Instruct
     parser.add_argument("--model_path", type=str, default="./LLaSO-Base") #LLaSO-Base ckpts path
-    parser.add_argument("--version", type=str, default="llama32_audio_v1_mmtag")
+    parser.add_argument("--version", type=str, default="llama32_audio_v1_mmtag") #keep it 
     parser.add_argument("--data_path", type=str, default="./LLaSO-Eval/xxx.json")  
     parser.add_argument("--data_type", type=str, default="asr")  #just keep it
     parser.add_argument("--output_dir", type=str, default="./your output dir")

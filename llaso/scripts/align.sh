@@ -1,7 +1,26 @@
 #!/bin/bash
-#--model_name_or_path /code/syr/Llama-3.2-3B-Instruct - replace with your local path. It is the LLM backbone.
-#--audio_tower /code/syr/whisper-large-v3 - replace it with your local path for the audio encoder.
-#At present we default audio select layer is the last layer of the encoder.
+
+################################################################################
+# LLaSO Stage 1: Speech–Text Alignment 
+#
+# This script trains the audio–text aligner used in Stage 1 of LLaSO training.
+# It connects Whisper-large-v3 (audio encoder) with Llama-3.2-3B-Instruct (LLM),
+# training a lightweight audio projector for semantic alignment.
+#
+# Key arguments:
+# --model_name_or_path   Path to the base LLM backbone (Llama-3.2-3B-Instruct).
+# --audio_tower          Path to the audio encoder (Whisper-large-v3). Default selects the last hidden layer from Whisper as audio features.
+# --data_path            Path to the Stage 1 ASR alignment dataset (JSON).
+# --tune_mm_audio_projector  Whether to train the audio projector in this stage. (True here)
+# --tune_mm_mlp_adapter      Whether to train the multimodal adapter (False here).
+# --mm_use_audio_start_end   Insert [AUDIO_START]/[AUDIO_END] tokens into sequences.
+#
+# Notes:
+# - Replace paths under /code/syr/... with your local paths.
+# - Output will be saved to --output_dir (default: /llaso/llaso_aligned_3b_ckpts).
+# - Default precision is bf16; adjust if your hardware does not support it.
+################################################################################
+
 
 deepspeed   /llaso/train/train_mem.py \
     --deepspeed  /llaso/scripts/zero2.json \
