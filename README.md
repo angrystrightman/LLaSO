@@ -128,9 +128,9 @@ We provide [`./llaso/scripts/data_merge.py`](./llaso/scripts/data_merge.py) for 
 Use it to combine the JSON files under each modality subdirectory into a single training file.  
 
 > **Dataset Availability**  
-> - **LLaSO-Instruct**: we are currently uploading the full dataset to Hugging Face.  
-> - **LLaSO-Align**: will be uploaded next.  
-*(Since the data are large and split across many files, we are uploading with multi-threading; due to network limits this process takes some time.)*
+> - ✅ **[LLaSO-Eval](https://huggingface.co/datasets/YirongSun/LLaSO-Eval)** is already available on Hugging Face.  
+> - ⏳ **LLaSO-Instruct** is currently being uploaded (large dataset, uploading in parallel threads; this may take some time due to network limits).  
+> - 📌 **LLaSO-Align** will be uploaded next.  
 
 <a id="quick-start"></a>
 ## 🚀 Quick Start
