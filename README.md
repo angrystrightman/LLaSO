@@ -127,6 +127,11 @@ However, for flexibility, we release the instruction data in multiple subdirecto
 We provide [`./llaso/scripts/data_merge.py`](./llaso/scripts/data_merge.py) for this purpose.  
 Use it to combine the JSON files under each modality subdirectory into a single training file.  
 
+> **Dataset Availability**  
+> - **LLaSO-Instruct**: we are currently uploading the full dataset to Hugging Face.  
+> - **LLaSO-Align**: will be uploaded next.  
+*(Since the data are large and split across many files, we are uploading with multi-threading; due to network limits this process takes some time.)*
+
 <a id="quick-start"></a>
 ## 🚀 Quick Start
 
