@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "llaso"
 version = "1.0.1.post1"
-description = "LLaSO: An Open-Source Stack for Large Language and Speech Modeling"
+description = "LLaSO: A Reproducible Foundation for Large Speech-Language Models"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -28,7 +28,7 @@ train = ["deepspeed==0.12.3", "ninja", "wandb"]
 build = ["build", "twine"]
 
 [project.urls]
-"Homepage" = "https://github.com/EIT-NLP/LLaSO"
+"Homepage" = 'anonymous'
 
 [tool.setuptools.packages.find]
 exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", "scripts*", "tests*"]
