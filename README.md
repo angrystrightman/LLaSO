@@ -1,4 +1,4 @@
-# LLaSO: A Reproducible Foundation for LargeSpeech-Language Models
+# LLaSO: A Reproducible Foundation for Large Speech-Language Models
 *Fully open corpus + benchmark + reference model for compositional speech-language understanding.*
 
 
@@ -54,7 +54,7 @@ LLaSO stack: Data, benchmark, and reference model for compositional speech–lan
 <a id="install"></a>
 ## 🛠️ Install
 ```bash
-git clone https://github.com/EIT-NLP/LLaSO.git
+git clone this repo
 cd LLaSO
 conda create -n llaso python=3.10 -y
 conda activate llaso
