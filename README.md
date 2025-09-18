@@ -1,4 +1,4 @@
-# LLaSO: A Foundational Framework for Reproducible Research in Large Language and Speech Model
+# LLaSO: A Reproducible Foundation for LargeSpeech-Language Models
 *Fully open corpus + benchmark + reference model for compositional speech-language understanding.*
 
 
