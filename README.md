@@ -124,7 +124,7 @@ However, for flexibility, we release the instruction data in multiple subdirecto
 - This split format allows users to **explore or train with individual modality subsets**.  
 - For full training, these subsets need to be **merged into one JSON**.  
 
-We provide [`./llaso/scripts/data_merge.py`](./llaso/scripts/data_merge.py) for this purpose.  
+We provide [`./llaso/data/data_merge.py`](./llaso/data/data_merge.py) for this purpose.  
 Use it to combine the JSON files under each modality subdirectory into a single training file.  
 
 > **Dataset Availability**  
