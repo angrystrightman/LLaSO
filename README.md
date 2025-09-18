@@ -1,27 +1,6 @@
 # LLaSO: A Foundational Framework for Reproducible Research in Large Language and Speech Model
 *Fully open corpus + benchmark + reference model for compositional speech-language understanding.*
 
-<p align="center">
-  <!-- Badges: replace placeholders with real links -->
-  <a href="https://huggingface.co/datasets/YirongSun/LLaSO-Align"><img src="https://img.shields.io/badge/HF%20Dataset-LLaSO--Align-16a085.svg" alt="HF Align"></a>
-  <a href="https://huggingface.co/datasets/YirongSun/LLaSO-Instruct"><img src="https://img.shields.io/badge/HF%20Dataset-LLaSO--Instruct-1abc9c.svg" alt="HF Ins"></a>
-  <a href="https://huggingface.co/datasets/YirongSun/LLaSO-Eval"><img src="https://img.shields.io/badge/HF%20Dataset-LLaSO--Eval-27ae60.svg" alt="HF Eval"></a>
-  <br>
-  <a href="https://arxiv.org/abs/2508.15418"><img src="https://img.shields.io/badge/arXiv-2508.15418-B31B1B.svg" alt="arXiv"></a>
-  <a href="https://huggingface.co/YirongSun/LLaSO-Base-3.8B-Instruct"><img src="https://img.shields.io/badge/HuggingFace-Model-ffcc00.svg" alt="HF Model"></a>
-  <a href="https://github.com/EIT-NLP/LLaSO"><img src="https://img.shields.io/github/stars/EIT-NLP/LLaSO?style=social" alt="GitHub Stars"></a>
-  <a href="#citation"><img src="https://img.shields.io/badge/Cite-BibTeX-9cf.svg" alt="Cite"></a>
-</p>
-
-<p align="center">
-  <a href="https://arxiv.org/abs/2508.15418">Paper</a> •
-  <a href="https://github.com/EIT-NLP/LLaSO">Code</a> •
-  <a href="https://huggingface.co/YirongSun/LLaSO-Base-3.8B-Instruct">Models</a> •
-  <a href="https://huggingface.co/datasets/YirongSun/LLaSO-Instruct">Datasets</a> •
-  <a href="https://huggingface.co/datasets/YirongSun/LLaSO-Eval">Benchmark</a> •
-  <a href="#install">Install</a> •
-  <a href="#quick-start">Quick Start</a>
-</p>
 
 > **TL;DR.** 25.5M training samples, 20 tasks, 3 modality configurations; 15,044-sample stratified benchmark; 3.8B open reference model - an open-source LSLM stack.
 
@@ -107,13 +86,13 @@ MAX_JOBS=8 pip install -v flash-attn --no-build-isolation
 
 LLaSO relies on the following backbone weights before training or inference:
 
-- **Audio encoder**: [openai/whisper-large-v3](https://huggingface.co/openai/whisper-large-v3)  
+- **Audio encoder**: [openai/whisper-large-v3]
   Used as `--audio_tower` in training/inference scripts.
 
-- **Base LLM**: [meta-llama/Llama-3.2-3B-Instruct](https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct)  
+- **Base LLM**: [meta-llama/Llama-3.2-3B-Instruct] 
   Used as `--model_name_or_path` in training scripts.
 
-- **LLaSO checkpoint**: [YirongSun/LLaSO-Base-3.8B-Instruct](https://huggingface.co/YirongSun/LLaSO-Base-3.8B-Instruct)  
+- **LLaSO checkpoint**: [LLaSO-Base-3.8B-Instruct] 
   Used as `--model_path` in the inference example.
 
 ## 📂 Data Preparation
@@ -124,12 +103,12 @@ However, for flexibility, we release the instruction data in multiple subdirecto
 - This split format allows users to **explore or train with individual modality subsets**.  
 - For full training, these subsets need to be **merged into one JSON**.  
 
-We provide [`./llaso/data/data_merge.py`](./llaso/data/data_merge.py) for this purpose.  
+We provide `/llaso/data/data_merge.py` for this purpose.  
 Use it to combine the JSON files under each modality subdirectory into a single training file.  
 
 > **Dataset Availability**  
-> - ✅ **[LLaSO-Eval](https://huggingface.co/datasets/YirongSun/LLaSO-Eval)** is already available on Hugging Face.  
-> - ✅ **[LLaSO-Instruct](https://huggingface.co/datasets/YirongSun/LLaSO-Instruct)** has been fully uploaded and is available now.  
+> - ✅ **LLaSO-Eval** is already available on Hugging Face.  
+> - ✅ **LLaSO-Instruct** has been fully uploaded and is available now.  
 > - ⏳ **LLaSO-Align** is currently being uploaded (large dataset, uploading in parallel threads; this may take some time due to network limits).
 
 <a id="quick-start"></a>
@@ -160,7 +139,7 @@ python llaso/evaluation/model_eval.py \
 LLaSO provides flexible evaluation metrics for all supported tasks.
 See the llaso/evaluation/metrics/ directory for dedicated metric scripts per task type.
 > **Tip:**
-> Refer to our [paper](arxiv) for detailed mapping of tasks to metrics and best practices.
+> Refer to our paperfor detailed mapping of tasks to metrics and best practices.
 
 > **Note:**
 > Training and inference configs are fully modular; see scripts and configs for options.
@@ -168,7 +147,7 @@ See the llaso/evaluation/metrics/ directory for dedicated metric scripts per tas
 
 | Model               | #Params | Training Data                | Modality Configs        | Normalized Score | Checkpoint          |
 |---------------------|--------:|------------------------------|------------------------|------------------|---------------------|
-| **LLaSO-Base**      | 3.8B    | LLaSO-Align + LLaSO-Instruct (25.5M) | (t,a), (a,t), (a)      | 0.72             | 🤗 [HF link](https://huggingface.co/YirongSun/LLaSO-Base-3.8B-Instruct)        |
+| **LLaSO-Base**      | 3.8B    | LLaSO-Align + LLaSO-Instruct (25.5M) | (t,a), (a,t), (a)      | 0.72             | 🤗 HF link       |
 | *(Future)* TBD | ...    | ...                          | ...                    | ...              | (coming)            |
 
 
@@ -232,36 +211,3 @@ Cases for input modality configurations and task prototypes illustrate LLaSO's c
 - **Speech-to-speech systems** with narrow task focus demonstrate stable cross-modality behavior but lag in overall capability.
 - **LSLMs tend to favor content-related tasks**, while paralinguistic subtleties are generally more difficult.
 
-<a id="citation"></a>
-## 📑 How to Cite
-
-If you use LLaSO in your research or applications, please cite our paper:
-
-```bibtex
-@misc{sun2025llaso,
-      title={LLaSO: A Foundational Framework for Reproducible Research in Large Language and Speech Model}, 
-      author={Yirong Sun and Yizhong Geng and Peidong Wei and Yanjun Chen and Jinghan Yang and Rongfei Chen and Wei Zhang and Xiaoyu Shen},
-      year={2025},
-      eprint={2508.15418},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2508.15418}, 
-}
-```
-
-## 🙏 Acknowledgement
-
-Our work builds upon and is inspired by several outstanding open-source projects and pretrained models, including:
-
-- [LLaVA (Haotian Liu et al.)](https://github.com/haotian-liu/LLaVA/tree/main)
-- [UMOE-Scaling (HITsz-TMG)](https://github.com/HITsz-TMG/UMOE-Scaling-Unified-Multimodal-LLMs)
-- [Llama-3.2-3B-Instruct (Meta)](https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct)
-- [Whisper-large-v3 (OpenAI)](https://huggingface.co/openai/whisper-large-v3)
-
-We gratefully acknowledge the authors and contributors for making these resources publicly available.
-
-## 📬 Contact
-```
-Email: win1282467298@gmail.com
-Organization: EIT-NLP Lab, Logic Intelligence Technology
-```
